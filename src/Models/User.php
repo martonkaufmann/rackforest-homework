@@ -12,7 +12,7 @@ class User
         public private(set) bool $isActive,
         public private(set) string $createdAt,
         public private(set) string $deletedAt,
-    ){}
+    ) {}
 
     /**
      * @param array $attributes Array containing user data with keys:
@@ -27,7 +27,7 @@ class User
         return new User(
             $attributes['id'],
             $attributes['email'],
-            (bool)$attributes['is_active'],
+            (bool) $attributes['is_active'],
             $attributes['created_at'] ?? '',
             $attributes['deleted_at'] ?? '',
         );

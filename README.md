@@ -1,7 +1,11 @@
-podman build -f Dockerfile -t rackforest --no-cache
+## Setup
 
-podman container run --name rackforest -d -v $(pwd):/var/www/html/rackforest:z -p 8000:8000 rackforest
+`podman build -f Dockerfile -t rackforest --no-cache`
 
-podman container exec rackforest composer install
+`podman container run --name rackforest -d -v $(pwd):/var/www/html/rackforest:z -p 8000:8000 rackforest`
 
-./vendor/bin/php-cs-fixer fix src --rules=@PER-CS2.0
+`podman container exec rackforest composer install`
+
+## Fix code style
+
+`PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix src --rules=@PER-CS2.0`

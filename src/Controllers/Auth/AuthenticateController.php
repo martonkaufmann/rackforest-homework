@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AuthenticateController
 {
     public function __construct(
-        private readonly UserRepository $userRepository = new UserRepository,
+        private readonly UserRepository $userRepository = new UserRepository(),
     ) {}
 
     public function __invoke(Request $request): Response

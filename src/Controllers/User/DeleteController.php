@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class DeleteController
 {
     public function __construct(
-        private readonly UserRepository $userRepository = new UserRepository,
+        private readonly UserRepository $userRepository = new UserRepository(),
     ) {}
 
     public function __invoke(Request $request): Response
@@ -27,7 +27,7 @@ class DeleteController
         }
 
         $this->userRepository->delete(
-            (int)$request->request->get('user')
+            (int) $request->request->get('user'),
         );
 
         return $response->setTargetUrl('/users/list');

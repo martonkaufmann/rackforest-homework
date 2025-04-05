@@ -25,7 +25,7 @@ class LoginController
         }
 
         return new Response(
-            $template->display('auth/login.tpl')
+            $template->display('auth/login.tpl'),
         );
     }
 }

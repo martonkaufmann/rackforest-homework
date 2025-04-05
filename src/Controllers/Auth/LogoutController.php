@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class LogoutController 
+class LogoutController
 {
     public function __construct(
     ) {}
@@ -20,6 +20,6 @@ class LogoutController
         $session = $request->getSession();
         $session->invalidate();
 
-       return     new RedirectResponse('/auth/login');
+        return     new RedirectResponse('/auth/login');
     }
 }

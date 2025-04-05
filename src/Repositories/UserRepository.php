@@ -23,15 +23,14 @@ class UserRepository
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE email = :username AND is_active = 1 AND deleted_at IS NULL LIMIT 1');
         $stmt->bindParam(':username', $username);
         $stmt->execute();
-        
+
         $record = $stmt->fetch(\PDO::FETCH_ASSOC);
-        
+
         if (!$record) {
             return null;
         }
 
-        if (!password_verify($password, $record['password']))
-        {
+        if (!password_verify($password, $record['password'])) {
             return null;
         }
 
@@ -45,7 +44,7 @@ class UserRepository
     {
         $stmt = $this->pdo->prepare('SELECT * FROM users');
         $stmt->execute();
-        
+
         $records = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $users = [];
 
@@ -61,9 +60,9 @@ class UserRepository
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id = :id LIMIT 1');
         $stmt->bindParam(':id', $id);
         $stmt->execute();
-        
+
         $record = $stmt->fetch(\PDO::FETCH_ASSOC);
-        
+
         if (!$record) {
             return null;
         }
@@ -73,7 +72,7 @@ class UserRepository
 
     public function delete(int $id)
     {
-        $now = (new DateTime)->format('Y-m-d H:i:s');
+        $now = (new DateTime())->format('Y-m-d H:i:s');
 
         $stmt = $this->pdo->prepare('UPDATE users SET deleted_at = :now WHERE id = :id');
         $stmt->bindParam(':id', $id);
@@ -81,4 +80,3 @@ class UserRepository
         $stmt->execute();
     }
 }
-

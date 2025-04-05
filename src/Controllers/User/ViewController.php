@@ -14,11 +14,11 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class ViewController
 {
     public function __construct(
-        private readonly UserRepository $userRepository = new UserRepository,
+        private readonly UserRepository $userRepository = new UserRepository(),
     ) {}
 
     public function __invoke(Request $request): Response
-    { 
+    {
         /** @var Smarty $template */
         $template = $request->attributes->get('template');
         /** @var Session */
@@ -29,7 +29,7 @@ class ViewController
         }
 
         $user = $this->userRepository->getById(
-            (int)$request->attributes->get('user'),
+            (int) $request->attributes->get('user'),
         );
 
         if ($user === null) {
@@ -39,7 +39,7 @@ class ViewController
         $template->assign('user', $user);
 
         return new Response(
-            $template->display('users/view.tpl')
+            $template->display('users/view.tpl'),
         );
     }
 }
