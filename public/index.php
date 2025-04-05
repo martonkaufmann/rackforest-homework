@@ -37,10 +37,9 @@ try {
     $response = new Response('Not Found', 404);
 } catch (Throwable $exception) {
     // In development mode expose the exception, otherwise don't show it to the user
-    // TODO: Comment
-//    if (getenv('APP_ENV') === 'development') {
+    if (getenv('APP_ENV') === 'development') {
         throw $exception;
-//    }
+    }
         
     $response = new Response('An error occurred', 500);
 }

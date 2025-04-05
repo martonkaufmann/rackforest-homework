@@ -18,7 +18,6 @@ class LogoutController
     {
         /** @var Session */
         $session = $request->getSession();
-        // TODO: Check if this logs out all users
         $session->invalidate();
 
        return     new RedirectResponse('/auth/login');
