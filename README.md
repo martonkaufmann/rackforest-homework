@@ -1,10 +1,16 @@
 ## Setup
 
+podman can be replaced with docker in the commands
+
 `podman build -f Dockerfile -t rackforest --no-cache`
 
 `podman container run --name rackforest -d -v $(pwd):/var/www/html/rackforest:z -p 8000:8000 rackforest`
 
 `podman container exec rackforest composer install`
+
+Following credentials can be used to log in: 
+* username: blabla@mail.com
+* password: password
 
 ## Fix code style
 
