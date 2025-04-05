@@ -10,9 +10,9 @@ use Symfony\Component\Routing;
 
 $authRoutes = new Routing\RouteCollection();
 
-$authRoutes->add('login', new Routing\Route('/login', ['_controller' => new LoginController], methods: [Request::METHOD_GET]));
-$authRoutes->add('logout', new Routing\Route('/logout', ['_controller' => new LogoutController], methods: [Request::METHOD_POST]));
-$authRoutes->add('authenticate', new Routing\Route('/authenticate', ['_controller' => new AuthenticateController], methods: [Request::METHOD_POST]));
+$authRoutes->add('login', new Routing\Route('/login', ['_controller' => new LoginController()], methods: [Request::METHOD_GET]));
+$authRoutes->add('logout', new Routing\Route('/logout', ['_controller' => new LogoutController()], methods: [Request::METHOD_POST]));
+$authRoutes->add('authenticate', new Routing\Route('/authenticate', ['_controller' => new AuthenticateController()], methods: [Request::METHOD_POST]));
 
 $authRoutes->addNamePrefix('auth');
 $authRoutes->addPrefix('auth');

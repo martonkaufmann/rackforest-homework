@@ -15,3 +15,4 @@ Following credentials can be used to log in:
 ## Fix code style
 
 `PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix src --rules=@PER-CS2.0`
+`PHP_CS_FIXER_IGNORE_ENV=1 ./vendor/bin/php-cs-fixer fix routes --rules=@PER-CS2.0`
