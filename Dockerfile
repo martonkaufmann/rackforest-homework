@@ -2,6 +2,8 @@ FROM php:8.4.5-bookworm
 
 EXPOSE 8000
 
+ENV APP_ENV="development"
+
 WORKDIR /var/www/html/rackforest
 
 COPY . .
@@ -14,4 +16,4 @@ RUN curl -o composer-setup.php -L https://raw.githubusercontent.com/composer/get
     mv composer.phar /usr/local/bin/composer &&\
     rm composer-setup.php
 
-CMD ["php", "-S", "0.0.0.0:8000"]
+CMD ["php", "-S", "0.0.0.0:8000", "public/index.php"]
