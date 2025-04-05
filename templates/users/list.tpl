@@ -16,6 +16,7 @@
                 <th>Created At</th>
                 <th>Active</th>
                 <th>Deleted</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -39,11 +40,25 @@
                         <span class="badge bg-success">&#x2713;</span>
                       {/if}
                     </td>
+                    <td>
+                      <a href="/users/view/{$user->id}" class="btn btn-sm btn-info">
+                        View
+                      </a>
+                      <a href="/users/edit/{$user->id}" class="btn btn-sm btn-primary">
+                        Edit
+                      </a>
+                      <form method="POST" action="/users/delete">
+                        <input type="hidden" value="{$user->id}" name="user" />
+                          <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this user?');">
+                            Delete
+                          </button>
+                      </form>
+                    </td>
                   </tr>
                 {/foreach}
               {else}
                 <tr>
-                  <td colspan="4" class="text-center">No users found</td>
+                  <td colspan="6" class="text-center">No users found</td>
                 </tr>
               {/if}
             </tbody>
