@@ -55,7 +55,7 @@ class UserRepository
         return $users;
     }
 
-    public function getById(int $id)
+    public function getById(int $id): ?User
     {
         $stmt = $this->pdo->prepare('SELECT * FROM users WHERE id = :id LIMIT 1');
         $stmt->bindParam(':id', $id);
@@ -70,7 +70,7 @@ class UserRepository
         return User::fromArray($record);
     }
 
-    public function delete(int $id)
+    public function delete(int $id): void
     {
         $now = (new DateTime())->format('Y-m-d H:i:s');
 
